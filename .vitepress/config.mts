@@ -54,6 +54,7 @@ export default defineConfig({
           { text: 'Full Stack', link: '/directions/full-stack' },
           { text: 'DevOps', link: '/directions/devops' },
           { text: 'Game Developer', link: '/directions/game-developer' },
+          { text: 'Embedded', link: '/directions/embedded' },
           { text: 'Cyber Security', link: '/directions/cyber-security' },
         ],
       },
