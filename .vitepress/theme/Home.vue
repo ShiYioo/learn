@@ -45,7 +45,7 @@ const routes = [
           <h1 id="home-title">从 0 到 1 的 <br/> CS 学习指南</h1><span style="padding:2px 8px;font-size:12px;color:#b45309;background:#fef3c7;border-radius:999px;">🚧 施工中 9.4 开始</span>
           <p class="zz-hero-summary">一份面向学生的开发学习路线图：明确方向，打好基础，学好开发如此简单。-- The Gift for beginners</p>
           <div class="zz-hero-actions">
-            <a class="zz-primary-action" :href="withBase('/getting-started/university-developer')">开始探索</a>
+            <a class="zz-primary-action" :href="withBase('/getting-started/introduction')">开始探索</a>
             <a
               class="zz-github-action"
               href="https://github.com/zzuli-dev/learn"

@@ -3,16 +3,18 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'ZZULI.dev',
-  description: '面向大学生开发者的学习路线图，从起步到实践逐步构建能力。',
+  description:
+    '一份面向学生的开发学习路线图：明确方向，打好基础，学好开发如此简单。-- The Gift for beginners',
   cleanUrls: true,
   lastUpdated: true,
   srcDir: 'src',
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
     siteTitle: 'ZZULI<span>.dev</span>',
     nav: [
-      { text: '关于', link: '/about/how-to-use' },
-      { text: '参与贡献', link: '/about/contribution' },
-      { text: '更多', link: '/about/more' },
+      { text: '起步', link: '/getting-started/introduction' },
+      { text: '参与贡献', link: '/contributing/guide' },
+      { text: '更多', link: '/more' },
     ],
     socialLinks: [
       {
@@ -23,16 +25,16 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: '关于路线图',
+        text: '起步',
         items: [
-          { text: '如何使用', link: '/about/how-to-use' },
-          { text: '如何参与贡献', link: '/about/contribution' },
-          { text: '路线图维护规范', link: '/about/maintenance' },
-        ],
-      },
-      {
-        text: '🎓 起步',
-        items: [
+          {
+            text: '简介',
+            link: '/getting-started/introduction',
+          },
+          {
+            text: '如何使用',
+            link: '/getting-started/how-to-use',
+          },
           {
             text: '大学生开发者',
             link: '/getting-started/university-developer',
@@ -45,6 +47,7 @@ export default defineConfig({
       },
       {
         text: '🚀 开发方向',
+        collapsed: true,
         items: [
           { text: 'Frontend', link: '/directions/frontend' },
           { text: 'Backend', link: '/directions/backend' },
@@ -88,6 +91,32 @@ export default defineConfig({
           { text: 'Docker', link: '/core-skills/docker' },
           { text: 'Bash', link: '/core-skills/bash' },
           { text: 'HTML & CSS', link: '/core-skills/html-css' },
+        ],
+      },
+      {
+        text: '💼 求职准备',
+        collapsed: true,
+        items: [
+          { text: '简历怎么写', link: '/career/resume' },
+          { text: '面试准备', link: '/career/interview' },
+          { text: '实习与校招', link: '/career/internship' },
+          { text: '刷题指南', link: '/career/leetcode' },
+        ],
+      },
+      {
+        text: '📚 学习资料',
+        collapsed: true,
+        items: [
+          { text: '书籍推荐', link: '/resources/books' },
+          { text: '网站与课程', link: '/resources/websites' },
+          { text: '工具清单', link: '/resources/tools' },
+        ],
+      },
+      {
+        text: '贡献与维护',
+        items: [
+          { text: '如何参与贡献', link: '/contributing/guide' },
+          { text: '路线图维护规范', link: '/contributing/maintenance' },
         ],
       },
     ],

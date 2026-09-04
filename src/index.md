@@ -1,5 +1,5 @@
 ---
 layout: home
 sidebar: false
-title: ZZULI.dev 学习路线图
+title: CS 学习指南 ｜ ZZULI.dev
 ---
