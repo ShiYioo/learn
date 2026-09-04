@@ -1,5 +1,7 @@
 # Computer Science
 
+<Badge type="warning" text="施工中" />
+
 计算机科学帮助你理解程序为何能运行、系统为何会出错，以及不同方案如何取舍。
 
 ## 核心主题

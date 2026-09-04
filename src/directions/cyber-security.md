@@ -1,5 +1,7 @@
 # Cyber Security
 
+<Badge type="warning" text="施工中" />
+
 安全学习的前提是合法授权、明确范围和对使用者负责。
 
 ## 学习顺序

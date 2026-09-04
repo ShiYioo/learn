@@ -1,5 +1,7 @@
 # SQL
 
+<Badge type="warning" text="施工中" />
+
 SQL 用于可靠地查询、组织和维护业务数据。
 
 ## 学习重点

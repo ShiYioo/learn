@@ -1,5 +1,7 @@
 # Frontend
 
+<Badge type="warning" text="施工中" />
+
 前端负责把产品能力变成清晰、可访问、响应迅速的用户体验。
 
 ## 学习顺序

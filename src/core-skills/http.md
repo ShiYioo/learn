@@ -1,5 +1,7 @@
 # HTTP
 
+<Badge type="warning" text="施工中" />
+
 理解 HTTP 能让前后端协作、调试接口和设计服务更有把握。
 
 ## 学习重点

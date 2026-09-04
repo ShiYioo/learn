@@ -1,5 +1,7 @@
 # HTML & CSS
 
+<Badge type="warning" text="施工中" />
+
 HTML 和 CSS 是所有 Web 界面的基础：语义正确，样式才会稳定、可访问、易维护。
 
 ## 学习重点

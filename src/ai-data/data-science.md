@@ -1,5 +1,7 @@
 # Data Science
 
+<Badge type="warning" text="施工中" />
+
 数据科学的价值在于通过可靠的数据与清楚的分析，帮助人做出更好的判断。
 
 ## 学习顺序

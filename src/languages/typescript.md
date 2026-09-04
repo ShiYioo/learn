@@ -1,5 +1,7 @@
 # TypeScript
 
+<Badge type="warning" text="施工中" />
+
 TypeScript 用类型系统让大型 JavaScript 项目更容易理解和维护。
 
 ## 学习重点

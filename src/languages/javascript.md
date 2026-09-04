@@ -1,5 +1,7 @@
 # JavaScript
 
+<Badge type="warning" text="施工中" />
+
 JavaScript 是 Web 平台的核心语言，理解它能帮助你建立浏览器与服务端两端的能力。
 
 ## 学习重点

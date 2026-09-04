@@ -1,5 +1,7 @@
 # Git & GitHub
 
+<Badge type="warning" text="施工中" />
+
 版本控制让你可以安全实验、清楚协作，并保留项目演进的过程。
 
 ## 学习重点

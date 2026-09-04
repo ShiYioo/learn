@@ -1,5 +1,7 @@
 # Game Developer
 
+<Badge type="warning" text="施工中" />
+
 游戏开发结合程序、交互、图形、音频与设计，是理解实时系统的好入口。
 
 ## 学习顺序

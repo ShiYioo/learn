@@ -1,5 +1,7 @@
 # Linux
 
+<Badge type="warning" text="施工中" />
+
 Linux 是理解服务器、开发环境和系统工具的重要基础。
 
 ## 学习重点

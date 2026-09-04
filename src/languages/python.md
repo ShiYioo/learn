@@ -1,5 +1,7 @@
 # Python
 
+<Badge type="warning" text="施工中" />
+
 Python 适合从自动化、数据处理、后端与 AI 工程切入。
 
 ## 学习重点

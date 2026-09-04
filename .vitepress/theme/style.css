@@ -220,7 +220,7 @@
   align-items: center;
   gap: 14px;
   margin: 28px 0 32px;
-  padding: 14px 18px 14px 14px;
+  padding: 2px 18px 2px 14px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   background: var(--vp-c-bg-soft);

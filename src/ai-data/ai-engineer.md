@@ -1,5 +1,7 @@
 # AI Engineer
 
+<Badge type="warning" text="施工中" />
+
 AI 工程师把模型能力转化为可靠、可评估、可维护的产品功能。
 
 ## 学习顺序

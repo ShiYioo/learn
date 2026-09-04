@@ -1,5 +1,7 @@
 # Java
 
+<Badge type="warning" text="施工中" />
+
 Java 适合学习成熟的工程实践、服务端开发与大型系统的组织方式。
 
 ## 学习重点

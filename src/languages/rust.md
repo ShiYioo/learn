@@ -1,5 +1,7 @@
 # Rust
 
+<Badge type="warning" text="施工中" />
+
 Rust 用所有权系统提供内存安全保障，适合系统、工具和高可靠服务开发。
 
 ## 学习重点

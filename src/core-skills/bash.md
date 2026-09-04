@@ -1,5 +1,7 @@
 # Bash
 
+<Badge type="warning" text="施工中" />
+
 Bash 是把命令组合成自动化流程的基础工具。
 
 ## 学习重点

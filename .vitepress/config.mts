@@ -36,8 +36,8 @@ export default defineConfig({
             link: '/getting-started/how-to-use',
           },
           {
-            text: '大学生开发者',
-            link: '/getting-started/university-developer',
+            text: '开发者基础',
+            link: '/getting-started/developer-basics',
           },
           {
             text: 'Computer Science',
