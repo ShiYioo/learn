@@ -6,7 +6,7 @@ const routes = [
   {
     title: '起步',
     detail: '从大学生活与计算机基础开始。',
-    link: '/getting-started/university-developer',
+    link: '/getting-started/introduction',
   },
   {
     title: '开发方向',
