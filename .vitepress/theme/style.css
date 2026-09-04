@@ -215,6 +215,24 @@
   color: var(--vp-c-brand-1);
 }
 
+.giscus-comments {
+  margin-top: 52px;
+  padding-top: 28px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.giscus-comments__title {
+  margin: 0 0 20px;
+  border: 0;
+  color: var(--vp-c-text-1);
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.giscus-comments giscus-widget {
+  display: block;
+}
+
 .lum-note {
   display: flex;
   align-items: center;
