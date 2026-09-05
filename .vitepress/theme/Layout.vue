@@ -7,7 +7,7 @@ import NotFound from './NotFound.vue'
 import SidebarBrand from './SidebarBrand.vue'
 import GiscusComments from './GiscusComments.vue'
 
-const { frontmatter } = useData()
+const { frontmatter, page } = useData()
 const isHome = computed(() => frontmatter.value.layout === 'home')
 const showComments = computed(() => frontmatter.value.comments !== false)
 const DefaultLayout = DefaultTheme.Layout
@@ -23,7 +23,7 @@ const DefaultLayout = DefaultTheme.Layout
       <SidebarBrand />
     </template>
     <template #doc-after>
-      <GiscusComments v-if="showComments" />
+      <GiscusComments v-if="showComments" :key="page.relativePath" />
     </template>
   </DefaultLayout>
 </template>
