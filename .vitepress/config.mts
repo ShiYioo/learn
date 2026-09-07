@@ -1,4 +1,52 @@
 import { defineConfig } from 'vitepress'
+import { writeFile } from 'node:fs/promises'
+import { resolve } from 'node:path'
+import type { Plugin } from 'vite'
+import { roadmapDefinitionById } from './roadmap-definitions.mjs'
+import { isRoadmapGraphData } from './roadmap-schema.mjs'
+
+const roadmapDirectory = resolve(process.cwd(), 'src/roadmaps')
+
+function isPersistableRoadmap(value: unknown): value is { id: string } {
+  if (!isRoadmapGraphData(value)) return false
+  const id = (value as { id: string }).id
+  return Boolean(roadmapDefinitionById.get(id))
+}
+
+function roadmapEditorPlugin(): Plugin {
+  return {
+    name: 'zzuli-roadmap-editor',
+    configureServer(server) {
+      server.middlewares.use('/__roadmap-editor/save', async (request, response, next) => {
+        if (request.method !== 'POST') return next()
+
+        try {
+          let body = ''
+          for await (const chunk of request) {
+            body += String(chunk)
+            if (body.length > 1_000_000) throw new Error('payload too large')
+          }
+
+          const graph: unknown = JSON.parse(body)
+          if (!isPersistableRoadmap(graph)) {
+            response.statusCode = 400
+            response.end('Invalid roadmap graph')
+            return
+          }
+
+          const definition = roadmapDefinitionById.get(graph.id)
+          if (!definition) throw new Error('unknown roadmap')
+          await writeFile(resolve(roadmapDirectory, definition.fileName), `${JSON.stringify(graph, null, 2)}\n`, 'utf8')
+          response.statusCode = 204
+          response.end()
+        } catch {
+          response.statusCode = 400
+          response.end('Unable to save roadmap graph')
+        }
+      })
+    },
+  }
+}
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -8,11 +56,18 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   srcDir: 'src',
+  vite: {
+    plugins: [roadmapEditorPlugin()],
+  },
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
     siteTitle: 'ZZULI<span>.dev</span>',
     nav: [
       { text: '起步', link: '/getting-started/introduction' },
+      {
+        text: '工具',
+        items: [{ text: '路线图编辑器', link: '/roadmap-editor' }],
+      },
       { text: '参与贡献', link: '/contributing/guide' },
       { text: '更多', link: '/more' },
     ],

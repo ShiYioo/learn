@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "id": "cyber-security",
+  "title": "Cyber Security",
+  "storageKey": "cyber-security",
+  "viewport": { "width": 760, "height": 560 },
+  "nodes": [
+    { "id": "root", "label": "Cyber Security", "kind": "root", "position": { "x": 300, "y": 48 } },
+    { "id": "start", "label": "待规划", "kind": "main", "position": { "x": 300, "y": 160 } }
+  ],
+  "edges": [
+    { "id": "main-1", "source": "root", "target": "start", "kind": "main", "sourceHandle": "bottom", "targetHandle": "top" }
+  ]
+}

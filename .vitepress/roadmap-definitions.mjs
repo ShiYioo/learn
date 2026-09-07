@@ -1,0 +1,32 @@
+export const roadmapDefinitions = [
+  { id: 'computer-science', label: 'Computer Science', fileName: 'computer-science.json', group: '起步' },
+  { id: 'frontend', label: 'Frontend', fileName: 'frontend.json', group: '开发方向' },
+  { id: 'backend', label: 'Backend', fileName: 'backend.json', group: '开发方向' },
+  { id: 'full-stack', label: 'Full Stack', fileName: 'full-stack.json', group: '开发方向' },
+  { id: 'devops', label: 'DevOps', fileName: 'devops.json', group: '开发方向' },
+  { id: 'game-developer', label: 'Game Developer', fileName: 'game-developer.json', group: '开发方向' },
+  { id: 'embedded', label: 'Embedded', fileName: 'embedded.json', group: '开发方向' },
+  { id: 'cyber-security', label: 'Cyber Security', fileName: 'cyber-security.json', group: '开发方向' },
+  { id: 'ai-engineer', label: 'AI Engineer', fileName: 'ai-engineer.json', group: 'AI & Data' },
+  { id: 'ai-agents', label: 'AI Agents', fileName: 'ai-agents.json', group: 'AI & Data' },
+  { id: 'data-science', label: 'Data Science', fileName: 'data-science.json', group: 'AI & Data' },
+  { id: 'python', label: 'Python', fileName: 'python.json', group: '编程语言' },
+  { id: 'javascript', label: 'JavaScript', fileName: 'javascript.json', group: '编程语言' },
+  { id: 'typescript', label: 'TypeScript', fileName: 'typescript.json', group: '编程语言' },
+  { id: 'java', label: 'Java', fileName: 'java.json', group: '编程语言' },
+  { id: 'c', label: 'C', fileName: 'c.json', group: '编程语言' },
+  { id: 'cpp', label: 'C++', fileName: 'cpp.json', group: '编程语言' },
+  { id: 'go', label: 'Go', fileName: 'go.json', group: '编程语言' },
+  { id: 'rust', label: 'Rust', fileName: 'rust.json', group: '编程语言' },
+  { id: 'git-github', label: 'Git & GitHub', fileName: 'git-github.json', group: '核心技能' },
+  { id: 'linux', label: 'Linux', fileName: 'linux.json', group: '核心技能' },
+  { id: 'sql', label: 'SQL', fileName: 'sql.json', group: '核心技能' },
+  { id: 'http', label: 'HTTP', fileName: 'http.json', group: '核心技能' },
+  { id: 'docker', label: 'Docker', fileName: 'docker.json', group: '核心技能' },
+  { id: 'bash', label: 'Bash', fileName: 'bash.json', group: '核心技能' },
+  { id: 'html-css', label: 'HTML & CSS', fileName: 'html-css.json', group: '核心技能' },
+]
+
+export const roadmapDefinitionById = new Map(
+  roadmapDefinitions.map((definition) => [definition.id, definition]),
+)

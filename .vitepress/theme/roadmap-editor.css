@@ -1,0 +1,507 @@
+.roadmap-editor {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 36px 24px 56px;
+}
+
+.roadmap-editor__header {
+  margin-bottom: 22px;
+}
+
+.roadmap-editor__header h1 {
+  margin: 0;
+  color: var(--vp-c-text-1);
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.roadmap-editor__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.roadmap-editor__toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.roadmap-editor__toolbar-group--end {
+  margin-left: auto;
+}
+
+.roadmap-editor__route-picker select {
+  min-height: 32px;
+  max-width: 190px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 5px 26px 5px 9px;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.roadmap-editor__route-picker select:focus {
+  border-color: var(--vp-c-brand-2);
+  outline: 2px solid var(--vp-c-brand-soft);
+}
+
+.roadmap-editor__toolbar button {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 6px 9px;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.roadmap-editor__toolbar button:hover:not(:disabled) {
+  border-color: var(--vp-c-brand-2);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.roadmap-editor__toolbar button:disabled {
+  cursor: default;
+  opacity: 0.48;
+}
+
+.roadmap-editor__toolbar button.is-primary {
+  border-color: var(--vp-c-brand-2);
+  color: #ffffff;
+  background: var(--vp-c-brand-2);
+}
+
+.roadmap-editor__toolbar button.is-primary:hover {
+  border-color: var(--vp-c-brand-1);
+  color: #ffffff;
+  background: var(--vp-c-brand-1);
+}
+
+.roadmap-editor__toolbar button.roadmap-editor__snap-toggle.is-active {
+  border-color: color-mix(in srgb, var(--vp-c-brand-2) 72%, var(--vp-c-divider));
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.roadmap-editor__file {
+  display: none;
+}
+
+.roadmap-editor__status {
+  min-height: 20px;
+  margin: 0 0 12px;
+  color: var(--vp-c-text-3);
+  font-size: 12px;
+}
+
+.roadmap-editor__workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  overflow: hidden;
+  min-height: 680px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg);
+}
+
+.roadmap-editor__canvas {
+  position: relative;
+  min-width: 0;
+  min-height: 680px;
+  background: var(--vp-c-bg-alt);
+}
+
+.roadmap-editor__canvas .vue-flow {
+  width: 100%;
+  height: 680px;
+  background: var(--vp-c-bg-alt);
+}
+
+.roadmap-editor__canvas.is-panning .vue-flow,
+.roadmap-editor__canvas.is-panning .vue-flow__pane,
+.roadmap-editor__canvas.is-panning .vue-flow__node {
+  cursor: grab;
+}
+
+.roadmap-editor__canvas.is-panning .vue-flow__pane:active {
+  cursor: grabbing;
+}
+
+.roadmap-editor__selection-toolbar {
+  display: flex;
+  position: absolute;
+  z-index: 7;
+  top: 14px;
+  left: 50%;
+  gap: 6px;
+  align-items: center;
+  max-width: calc(100% - 24px);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 7px;
+  padding: 5px;
+  color: var(--vp-c-text-2);
+  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
+  box-shadow: 0 4px 16px rgb(15 23 42 / 12%);
+  font-size: 12px;
+  transform: translateX(-50%);
+}
+
+.roadmap-editor__selection-toolbar > span {
+  padding: 0 4px;
+  color: var(--vp-c-text-1);
+  font-weight: 680;
+  white-space: nowrap;
+}
+
+.roadmap-editor__selection-actions {
+  display: flex;
+  gap: 2px;
+  padding-left: 5px;
+  border-left: 1px solid var(--vp-c-divider);
+}
+
+.roadmap-editor__selection-toolbar button,
+.roadmap-editor__context-menu button {
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 6px;
+  color: var(--vp-c-text-2);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.roadmap-editor__selection-toolbar button:hover:not(:disabled),
+.roadmap-editor__context-menu button:hover {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.roadmap-editor__selection-toolbar button:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
+.roadmap-editor__selection-toolbar button.is-danger,
+.roadmap-editor__context-menu button.is-danger {
+  color: var(--vp-c-danger-1, #c2410c);
+}
+
+.roadmap-editor__context-menu {
+  display: grid;
+  position: absolute;
+  z-index: 8;
+  width: 178px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 7px;
+  padding: 4px;
+  background: var(--vp-c-bg);
+  box-shadow: 0 8px 22px rgb(15 23 42 / 16%);
+}
+
+.roadmap-editor__context-menu button {
+  width: 100%;
+  padding: 7px 8px;
+  text-align: left;
+}
+
+.roadmap-editor__canvas .vue-flow__controls {
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 7px;
+  box-shadow: 0 3px 12px rgb(15 23 42 / 8%);
+}
+
+.roadmap-editor__canvas .vue-flow__controls-button {
+  border-color: var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg);
+}
+
+.roadmap-editor__canvas .vue-flow__controls-button:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+.roadmap-editor__canvas .vue-flow__minimap {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--vp-c-bg) 88%, transparent);
+}
+
+.roadmap-editor__canvas .vue-flow__edge.selected .vue-flow__edge-path {
+  stroke: var(--vp-c-brand-1) !important;
+  stroke-width: 3px;
+}
+
+.roadmap-editor-node {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 160px;
+  height: 48px;
+  border: 1px solid #75bfb4;
+  border-radius: 7px;
+  padding: 8px 12px;
+  color: #18313a;
+  background: #ddf2ec;
+  box-shadow: 0 1px 1px rgb(24 49 58 / 7%);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 680;
+  line-height: 1.35;
+}
+
+.roadmap-editor-node--branch {
+  width: 144px;
+  height: 48px;
+  border-color: #e6c47d;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fff3d8;
+  font-size: 12px;
+}
+
+.roadmap-editor-node--note {
+  place-items: start;
+  width: 208px;
+  min-height: 48px;
+  height: auto;
+  border: 0;
+  border-left: 2px solid color-mix(in srgb, var(--vp-c-brand-2) 56%, var(--vp-c-divider));
+  border-radius: 0;
+  padding: 8px 12px;
+  color: var(--vp-c-text-2);
+  background: color-mix(in srgb, var(--vp-c-bg) 60%, transparent);
+  box-shadow: none;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 560;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.roadmap-editor-node .vue-flow__handle {
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--vp-c-bg);
+  background: var(--vp-c-brand-2);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.roadmap-editor-node:hover .vue-flow__handle,
+.roadmap-editor-node.selected .vue-flow__handle,
+.roadmap-editor-node:focus-within .vue-flow__handle {
+  opacity: 1;
+}
+
+.roadmap-editor-node .vue-flow__handle-right,
+.roadmap-editor-node .vue-flow__handle-left {
+  top: 50%;
+}
+
+.roadmap-editor-node__choice {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  width: 19px;
+  height: 19px;
+  border: 2px solid var(--vp-c-bg);
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgb(24 49 58 / 18%);
+  font-size: 12px;
+  font-weight: 800;
+  transform: translateY(-50%);
+}
+
+.roadmap-editor-node__choice.is-left {
+  right: auto;
+  left: -10px;
+}
+
+.roadmap-editor-node__choice.is-recommended {
+  background: #7657d5;
+}
+
+.roadmap-editor-node__choice.is-alternative {
+  background: #4f8d38;
+}
+
+.roadmap-editor__inspector {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  border-left: 1px solid var(--vp-c-divider);
+  padding: 18px;
+  background: var(--vp-c-bg);
+}
+
+.roadmap-editor__panel-title {
+  margin: 0;
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  font-weight: 720;
+}
+
+.roadmap-editor__inspector label {
+  display: grid;
+  gap: 6px;
+  color: var(--vp-c-text-2);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.roadmap-editor__inspector input,
+.roadmap-editor__inspector select,
+.roadmap-editor__inspector textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 32px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 5px;
+  padding: 5px 7px;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-alt);
+  font: inherit;
+  font-size: 13px;
+}
+
+.roadmap-editor__inspector input:focus,
+.roadmap-editor__inspector select:focus,
+.roadmap-editor__inspector textarea:focus {
+  border-color: var(--vp-c-brand-2);
+  outline: 2px solid var(--vp-c-brand-soft);
+}
+
+.roadmap-editor__inspector textarea {
+  min-height: 88px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.roadmap-editor__coordinates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.roadmap-editor__hint {
+  margin: 0;
+  color: var(--vp-c-text-3);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.roadmap-editor__delete-edge {
+  justify-self: start;
+  border: 0;
+  border-radius: 5px;
+  padding: 0;
+  color: var(--vp-c-danger-1, #c2410c);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.roadmap-editor__delete-edge:hover {
+  text-decoration: underline;
+}
+
+.dark .roadmap-editor-node {
+  border-color: #4c968c;
+  color: #dfdfd6;
+  background: #203d3a;
+}
+
+.dark .roadmap-editor-node--branch {
+  border-color: #8e7847;
+  background: #3b3424;
+}
+
+.dark .roadmap-editor-node--note {
+  color: var(--vp-c-text-2);
+  background: color-mix(in srgb, var(--vp-c-bg) 60%, transparent);
+}
+
+@media (max-width: 900px) {
+  .roadmap-editor {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .roadmap-editor__workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-editor__inspector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--vp-c-divider);
+    border-left: 0;
+  }
+
+  .roadmap-editor__panel-title,
+  .roadmap-editor__hint {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .roadmap-editor {
+    padding: 24px 16px 42px;
+  }
+
+  .roadmap-editor__header h1 {
+    font-size: 24px;
+  }
+
+  .roadmap-editor__toolbar-group--end {
+    margin-left: 0;
+  }
+
+  .roadmap-editor__canvas,
+  .roadmap-editor__canvas .vue-flow {
+    min-height: 520px;
+    height: 520px;
+  }
+
+  .roadmap-editor__workspace {
+    min-height: 520px;
+  }
+
+  .roadmap-editor__selection-toolbar {
+    top: 10px;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .roadmap-editor__selection-toolbar > span {
+    display: none;
+  }
+
+  .roadmap-editor__selection-toolbar button {
+    padding: 4px 5px;
+    font-size: 11px;
+  }
+
+  .roadmap-editor__inspector {
+    grid-template-columns: 1fr;
+  }
+}
