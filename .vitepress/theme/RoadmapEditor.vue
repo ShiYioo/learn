@@ -666,18 +666,19 @@ function onWindowKeyDown(event: KeyboardEvent) {
   if (inTextInput || event.defaultPrevented) return
 
   const key = event.key.toLowerCase()
+  const isCanvasShortcut = !event.altKey && !event.metaKey && !event.ctrlKey
   const panDiff = viewPanDiffs[event.key]
-  if (panDiff && !event.altKey && !event.metaKey && !event.ctrlKey) {
+  if (panDiff && isCanvasShortcut) {
     event.preventDefault()
     panViewport(panDiff, event.shiftKey)
     return
   }
-  if (key === '+' || key === '=') {
+  if (isCanvasShortcut && (key === '+' || key === '=' || event.code === 'NumpadAdd')) {
     event.preventDefault()
     void flowInstance.value?.zoomIn()
     return
   }
-  if (key === '-') {
+  if (isCanvasShortcut && (key === '-' || event.code === 'NumpadSubtract')) {
     event.preventDefault()
     void flowInstance.value?.zoomOut()
     return
@@ -963,7 +964,7 @@ watch(
           :connection-mode="ConnectionMode.Loose"
           :selection-key-code="true"
           pan-activation-key-code="Space"
-          :pan-on-drag="false"
+          :pan-on-drag="[1]"
           :nodes-draggable="!isSpacePressed"
           :snap-to-grid="isGridSnapEnabled"
           :snap-grid="[16, 16]"
@@ -1113,7 +1114,7 @@ watch(
               <input v-model.number="metadata.viewport.height" type="number" min="480" />
             </label>
           </div>
-          <p class="roadmap-editor__hint">方向键平移画布（Shift 加速），+ / - 缩放，⌘/Ctrl + Z 撤销。</p>
+          <p class="roadmap-editor__hint">方向键平移画布（Shift 加速），+ / - 缩放；按住中键或空格加拖动平移。⌘/Ctrl + Z 撤销。</p>
           <p class="roadmap-editor__hint">桌面端保留你摆放的位置；移动端自动转成便于阅读的纵向主线。</p>
         </template>
       </aside>
