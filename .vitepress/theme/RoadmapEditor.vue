@@ -44,6 +44,9 @@ interface EditorEdgeData {
 
 interface EditorFlowApi {
   screenToFlowCoordinate(position: { x: number; y: number }): { x: number; y: number }
+  panBy(delta: { x: number; y: number }): boolean
+  zoomIn(): Promise<boolean>
+  zoomOut(): Promise<boolean>
 }
 
 interface ContextMenuState {
@@ -642,12 +645,45 @@ function isTextInput(target: EventTarget | null) {
   )
 }
 
+const viewPanDiffs: Record<string, { x: number; y: number }> = {
+  ArrowUp: { x: 0, y: -1 },
+  ArrowDown: { x: 0, y: 1 },
+  ArrowLeft: { x: -1, y: 0 },
+  ArrowRight: { x: 1, y: 0 },
+}
+const viewPanStep = 80
+const viewPanFastStep = 320
+
+function panViewport(direction: { x: number; y: number }, fast: boolean) {
+  const step = fast ? viewPanFastStep : viewPanStep
+  // panBy 的正值沿变换方向移动内容，取反后方向键才是“视口朝该方向移动”
+  flowInstance.value?.panBy({ x: -direction.x * step, y: -direction.y * step })
+}
+
 function onWindowKeyDown(event: KeyboardEvent) {
   const inTextInput = isTextInput(event.target)
   if (event.code === 'Space' && !inTextInput) isSpacePressed.value = true
-  if (inTextInput || event.altKey || (!event.metaKey && !event.ctrlKey)) return
+  if (inTextInput || event.defaultPrevented) return
 
   const key = event.key.toLowerCase()
+  const panDiff = viewPanDiffs[event.key]
+  if (panDiff && !event.altKey && !event.metaKey && !event.ctrlKey) {
+    event.preventDefault()
+    panViewport(panDiff, event.shiftKey)
+    return
+  }
+  if (key === '+' || key === '=') {
+    event.preventDefault()
+    void flowInstance.value?.zoomIn()
+    return
+  }
+  if (key === '-') {
+    event.preventDefault()
+    void flowInstance.value?.zoomOut()
+    return
+  }
+
+  if (event.altKey || (!event.metaKey && !event.ctrlKey)) return
   if (key === 'z') {
     event.preventDefault()
     moveHistory(event.shiftKey ? 1 : -1)
@@ -1077,6 +1113,7 @@ watch(
               <input v-model.number="metadata.viewport.height" type="number" min="480" />
             </label>
           </div>
+          <p class="roadmap-editor__hint">方向键平移画布（Shift 加速），+ / - 缩放，⌘/Ctrl + Z 撤销。</p>
           <p class="roadmap-editor__hint">桌面端保留你摆放的位置；移动端自动转成便于阅读的纵向主线。</p>
         </template>
       </aside>
